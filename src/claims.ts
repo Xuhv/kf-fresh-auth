@@ -30,8 +30,6 @@ export function createClaimsAgent<Policy = unknown>(claims: Claim[]): ClaimsAgen
     return {
         claims,
         get,
-        get policies() {
-            return policies;
-        },
+        policies
     };
 }

@@ -2,7 +2,7 @@ import { HandlerByMethod, HandlerFn } from "fresh";
 import { AuthState } from "./middleware.ts";
 
 /**
- * wrap a handler with authoization logic
+ * wrap a handler with authorization logic
  * @param handler
  * @param policies if policies are provided, the handler will only be called if the user has at least one of the policies
  * @returns
@@ -21,7 +21,7 @@ export function defineHandler<
 }
 
 /**
- * wrap a handler with authoization logic
+ * wrap a handler with authorization logic
  * @param handlers
  * @param policies if policies are provided, the handler will only be called if the user has at least one of the policies
  * @returns
