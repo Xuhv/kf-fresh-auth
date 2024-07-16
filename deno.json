@@ -1,6 +1,12 @@
 {
   "name": "@kf/fresh-auth",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
+  "exports": {
+    "./handlers.ts": "./src/handlers.ts",
+    "./jwt.ts": "./src/jwt.ts",
+    "./password.ts": "./src/password.ts",
+    "./state.ts": "./src/state.ts"
+  },
   "publish": {
     "exclude": [
       "deno.lock",
@@ -9,7 +15,6 @@
       "test.ts"
     ]
   },
-  "exports": "./src/mod.ts",
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "dev": "deno run -A --watch=static/,routes/ dev.ts",
@@ -33,10 +38,12 @@
     "**/_fresh/*"
   ],
   "imports": {
-    "fresh": "jsr:@fresh/core@^2.0.0-alpha.19",
     "@fresh/plugin-tailwind": "jsr:@fresh/plugin-tailwind@^0.0.1-alpha.7",
-    "preact": "npm:preact@^10.22.0",
-    "@preact/signals": "npm:@preact/signals@^1.2.3"
+    "@preact/signals": "npm:@preact/signals@^1.2.3",
+    "@std/crypto": "jsr:@std/crypto@^1.0.1",
+    "fresh": "jsr:@fresh/core@^2.0.0-alpha.19",
+    "jose": "npm:jose@^5.6.3",
+    "preact": "npm:preact@^10.22.0"
   },
   "compilerOptions": {
     "lib": [

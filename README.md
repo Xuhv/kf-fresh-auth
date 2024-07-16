@@ -7,22 +7,19 @@ Policies-based authentication for Fresh.
 1. create a middleware to add user information to the context
 
 ```tsx
-const users = [
-    { name: "Alice", policies: ["admin", "user"] },
-    { name: "Bob", policies: ["user"] },
-];
+const authMiddleware = auth<string, string>(async (ctx) => {
+  const accessToken = ctx.req.headers.get("Authorization")?.slice(7);
+  if (!accessToken) return undefined;
 
-const authMiddleware = auth<string>(async (ctx) => {
-    const bearer = ctx.req.headers.get("Authorization")?.slice(7);
-    if (!bearer) return undefined;
-
-    // you can get user information from database or jwt
-    return createClaimsAgent([["username", bearer], ["policies", users.find((u) => u.name === bearer)?.policies]]);
+  const { error, result } = await mightFail(verifyToken(accessToken))
+  return error ? undefined : { id: result.payload.sub!, policies: result.payload.policies as string[] };
 });
 ```
 
 2. create a handler with policies
 
 ```ts
-export const handler = defineHandler((ctx) => new Response(`Hello ${ctx.state.claims?.get("username")}!`), ["user"]);
+app.get("/user", defineHandler((ctx) => {
+  return new Response(`Here is ${getAuthState(ctx)?.id}.`)
+}, ["user"]) as MiddlewareFn<unknown>);
 ```

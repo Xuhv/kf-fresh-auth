@@ -1,10 +1,10 @@
 import { assert } from "jsr:@std/assert";
 
-// const users = [ "Alice", "Bob" ]
-// const apis = ["/", "/user", "/admin"]
 const api1 = "http://localhost:8000";
 const api2 = "http://localhost:8000/user";
 const api3 = "http://localhost:8000/admin";
+
+const { alice, bob } = await fetch("http://localhost:8000/tokens").then((r) => r.json())
 
 Deno.test("annonymous", async () => {
     const response1 = await fetch(api1);
@@ -23,7 +23,7 @@ Deno.test("annonymous", async () => {
 
 Deno.test("alice", async () => {
     const headers = new Headers();
-    headers.set("Authorization", "Bearer Alice");
+    headers.set("Authorization", "Bearer " + alice);
 
     const response1 = await fetch(api1, { headers });
     assert(response1.status === 200);
@@ -41,7 +41,7 @@ Deno.test("alice", async () => {
 
 Deno.test("bob", async () => {
     const headers = new Headers();
-    headers.set("Authorization", "Bearer Bob");
+    headers.set("Authorization", "Bearer " + bob);
 
     const response1 = await fetch(api1, { headers });
     assert(response1.status === 200);
