@@ -22,6 +22,7 @@
       "npm:esbuild-wasm@0.20.2": "npm:esbuild-wasm@0.20.2",
       "npm:esbuild@0.20.2": "npm:esbuild@0.20.2",
       "npm:jose": "npm:jose@5.4.1",
+      "npm:jose@^5.6.3": "npm:jose@5.6.3",
       "npm:preact-render-to-string@^6.4.2": "npm:preact-render-to-string@6.5.5_preact@10.22.0",
       "npm:preact@10.22.0": "npm:preact@10.22.0",
       "npm:preact@^10.22.0": "npm:preact@10.22.0"
@@ -234,6 +235,10 @@
       },
       "jose@5.4.1": {
         "integrity": "sha512-U6QajmpV/nhL9SyfAewo000fkiRQ+Yd2H0lBxJJ9apjpOgkOcBQJWOrMo917lxLptdS/n/o/xPzMkXhF46K8hQ==",
+        "dependencies": {}
+      },
+      "jose@5.6.3": {
+        "integrity": "sha512-1Jh//hEEwMhNYPDDLwXHa2ePWgWiFNNUadVmguAAw2IJ6sj9mNxV5tGXJNqlMkJAybF6Lgw1mISDxTePP/187g==",
         "dependencies": {}
       },
       "preact-render-to-string@6.5.5_preact@10.22.0": {

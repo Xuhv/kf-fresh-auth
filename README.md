@@ -7,7 +7,7 @@ Policies-based authentication for Fresh.
 1. create a middleware to add user information to the context
 
 ```tsx
-const authMiddleware = auth<string, string>(async (ctx) => {
+const authMiddleware = createAuthMiddleware<string, string>(async (ctx) => {
   const accessToken = ctx.req.headers.get("Authorization")?.slice(7);
   if (!accessToken) return undefined;
 
@@ -20,6 +20,6 @@ const authMiddleware = auth<string, string>(async (ctx) => {
 
 ```ts
 app.get("/user", defineHandler((ctx) => {
-  return new Response(`Here is ${getAuthState(ctx)?.id}.`)
+  return new Response(`Here is ${getAuthInfo(ctx)?.id}.`)
 }, ["user"]) as MiddlewareFn<unknown>);
 ```

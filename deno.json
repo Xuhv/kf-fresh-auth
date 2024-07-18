@@ -1,6 +1,6 @@
 {
   "name": "@kf/fresh-auth",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "exports": {
     "./handlers.ts": "./src/handlers.ts",
     "./jwt.ts": "./src/jwt.ts",
